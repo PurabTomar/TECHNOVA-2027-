@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <!-- Background circle gradient -->
+    <radialGradient id="satiBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="85%" stop-color="#f4f7fb"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </radialGradient>
+    <!-- Outer rim gold gradient -->
+    <linearGradient id="satiGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4af37"/>
+      <stop offset="50%" stop-color="#f9d976"/>
+      <stop offset="100%" stop-color="#aa7c11"/>
+    </linearGradient>
+    <!-- Deep Navy for text and gear -->
+    <linearGradient id="satiNavy" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a194f"/>
+      <stop offset="100%" stop-color="#050d2c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Base Circle for badge contrast -->
+  <circle cx="80" cy="80" r="78" fill="url(#satiBg)" stroke="url(#satiGold)" stroke-width="3"/>
+
+  <!-- Outer Cogwheel Ring (16 gear teeth for Engineering & Technology) -->
+  <g fill="url(#satiNavy)" opacity="0.95">
+    <!-- Cog teeth around rim -->
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(0 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(22.5 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(45 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(67.5 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(90 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(112.5 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(135 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(157.5 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(180 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(202.5 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(225 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(247.5 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(270 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(292.5 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(315 80 80)"/>
+    <rect x="76" y="4" width="8" height="8" rx="1.5" transform="rotate(337.5 80 80)"/>
+  </g>
+
+  <!-- Ring border -->
+  <circle cx="80" cy="80" r="68" fill="none" stroke="url(#satiNavy)" stroke-width="3"/>
+  <circle cx="80" cy="80" r="54" fill="none" stroke="url(#satiGold)" stroke-width="2"/>
+
+  <!-- Curved text top: SAMRAT ASHOK TECH INST -->
+  <path id="textArcTop" d="M 28 80 A 52 52 0 0 1 132 80" fill="none"/>
+  <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="900" fill="url(#satiNavy)" letter-spacing="1.2">
+    <textPath href="#textArcTop" startOffset="50%" text-anchor="middle">S. A. T. I. VIDISHA</textPath>
+  </text>
+
+  <!-- Curved text bottom: ESTD 1960 -->
+  <path id="textArcBottom" d="M 132 80 A 52 52 0 0 1 28 80" fill="none"/>
+  <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="800" fill="url(#satiNavy)" letter-spacing="1.5">
+    <textPath href="#textArcBottom" startOffset="50%" text-anchor="middle">ESTD. 1960 • MP</textPath>
+  </text>
+
+  <!-- Inner Center Emblem Shield / Ashoka Sun / Torch -->
+  <circle cx="80" cy="80" r="38" fill="#ffffff" stroke="url(#satiNavy)" stroke-width="2"/>
+
+  <!-- Ashoka Chakra 24 rays motif in center -->
+  <circle cx="80" cy="80" r="26" fill="#f0f5ff" stroke="url(#satiGold)" stroke-width="1.5"/>
+  <circle cx="80" cy="80" r="7" fill="url(#satiNavy)"/>
+  
+  <!-- Central Spoke Wheel lines -->
+  <g stroke="url(#satiNavy)" stroke-width="1.2" opacity="0.8">
+    <line x1="80" y1="56" x2="80" y2="104"/>
+    <line x1="56" y1="80" x2="104" y2="80"/>
+    <line x1="63" y1="63" x2="97" y2="97"/>
+    <line x1="63" y1="97" x2="97" y2="63"/>
+    <line x1="71" y1="57.5" x2="89" y2="102.5"/>
+    <line x1="57.5" y1="71" x2="102.5" y2="89"/>
+    <line x1="89" y1="57.5" x2="71" y2="102.5"/>
+    <line x1="57.5" y1="89" x2="102.5" y2="71"/>
+  </g>
+
+  <!-- Central Star Sparkle of Innovation -->
+  <polygon points="80,72 82,78 88,80 82,82 80,88 78,82 72,80 78,78" fill="#ffffff"/>
+</svg>

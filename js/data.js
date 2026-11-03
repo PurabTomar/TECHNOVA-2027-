@@ -7,8 +7,31 @@
 const FEST_NAME = "TECHNOVA";
 const FEST_YEAR = "2027";
 const FEST_DAYS = ["2027-02-12", "2027-02-13"];
-const VENUE_NAME = "University Central Campus";
+const VENUE_NAME = "Samrat Ashok Technological Institute (SATI), Vidisha";
+const COLLEGE_LOGO = "assets/sati-logo.svg";
 const CONTACT_EMAIL = "fest@example.edu";
+
+// Campus Venue Reference Metadata (Authentic Venue Infrastructure)
+const CAMPUS_IMAGES = [
+  {
+    id: "main-complex",
+    title: "SATI Academic Complex",
+    venue: "Main Innovation Lab",
+    description: "Central engineering complex hosting Code Crack 3.0 Hackathon and system tracks."
+  },
+  {
+    id: "computing-center",
+    title: "Computing & IT Complex",
+    venue: "Lab 2 & Cyber Security Lab 4",
+    description: "High-speed networked computing labs hosting algorithmic sprints and CTF gauntlets."
+  },
+  {
+    id: "auditorium-arena",
+    title: "SATI Central Auditorium & Amphitheatre",
+    venue: "Central Stage Auditorium & Open Air Amphitheatre",
+    description: "Main campus auditoriums for battle of the bands, street dance, and EDM finale."
+  }
+];
 
 // Category Configuration: single mapping for labels, badge classes, and icons
 const CATEGORIES = {

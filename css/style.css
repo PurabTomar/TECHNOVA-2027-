@@ -19,6 +19,8 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
+  box-sizing: border-box;
 }
 
 body {
@@ -31,6 +33,8 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 /* --------------------------------------------------------------------------
@@ -320,8 +324,57 @@ a:hover {
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* SATI College Logo Badge: small round white badge visible on dark themes */
+.college-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 2px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-sizing: border-box;
+}
+
+.college-logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+
+.hero-logo-badge {
+  width: 24px;
+  height: 24px;
+  padding: 1.5px;
+}
+
+.footer-logo-badge {
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+}
+
+.mini-logo-badge {
+  width: 20px;
+  height: 20px;
+  padding: 1px;
+}
+
+.pass-logo-badge {
+  width: 28px;
+  height: 28px;
+  padding: 2px;
 }
 
 .brand-icon {
@@ -1208,65 +1261,145 @@ a:hover {
   border: 1px solid var(--border-subtle);
   border-radius: var(--border-radius-lg);
   padding: clamp(1.5rem, 4vw, 2.75rem);
-  max-width: 760px;
-  margin: 0 auto;
+  width: min(100%, 880px);
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
   box-shadow: var(--shadow-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-sizing: border-box;
+}
+
+#registrationForm {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.form-header-intro {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.form-legend {
+  font-family: var(--font-body) !important;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin: 0;
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  align-items: start;
+  box-sizing: border-box;
 }
 
 .form-group-full {
   grid-column: 1 / -1;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .form-label {
-  font-size: 0.85rem;
-  font-family: var(--font-display);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--font-body) !important;
+  font-size: 14.5px;
   font-weight: 600;
   color: var(--color-text-primary);
-  letter-spacing: 0.04em;
+  line-height: 1.3;
+  white-space: nowrap;
+  margin-bottom: 0.1rem;
+}
+
+.form-label-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
 }
 
 .form-label .req-star {
   color: var(--color-error);
+  font-weight: 700;
 }
 
-.form-hint {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
+.label-badge-optional {
+  font-family: var(--font-body) !important;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-full);
+  padding: 0.15rem 0.55rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+
+.form-control-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .form-input,
-.form-select,
-.form-textarea {
-  min-height: var(--btn-min-height);
-  background: var(--color-bg-input);
+.form-select {
+  height: 48px;
+  min-height: 48px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: var(--color-bg-input);
   border: 1px solid var(--border-subtle);
   border-radius: var(--border-radius-sm);
   padding: 0.65rem 1rem;
   color: var(--color-text-primary);
-  font-family: var(--font-body);
+  font-family: var(--font-body) !important;
   font-size: 0.95rem;
+  line-height: 1.5;
   transition: var(--transition-smooth);
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: var(--color-text-muted);
 }
 
 .form-select {
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: var(--select-chevron-url);
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 16px 16px;
+  padding-right: 2.75rem;
+}
+
+.form-select.select-placeholder,
+.form-select:has(option[value=""]:checked) {
+  color: var(--color-text-muted);
 }
 
 .form-select option,
@@ -1277,29 +1410,100 @@ a:hover {
 
 .form-textarea {
   min-height: 110px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: var(--color-bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-sm);
+  padding: 0.75rem 1rem;
+  color: var(--color-text-primary);
+  font-family: var(--font-body) !important;
+  font-size: 0.95rem;
+  line-height: 1.5;
   resize: vertical;
+  transition: var(--transition-smooth);
 }
 
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  outline: none;
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-muted);
+  font-family: var(--font-body) !important;
+  opacity: 0.85;
+}
+
+/* Clear Focus Rings */
+.form-input:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
   border-color: var(--border-focus);
-  box-shadow: 0 0 10px var(--color-accent-primary-faint);
+  box-shadow: 0 0 12px var(--color-accent-primary-faint);
 }
 
+/* Error States (Red border + icon + text, not color alone) */
 .form-input.input-invalid,
 .form-select.input-invalid,
 .form-textarea.input-invalid {
-  border-color: var(--color-error-border);
-  background: var(--color-error-bg);
+  border-color: var(--color-error-border) !important;
+  background-color: var(--color-error-bg);
+}
+
+/* Valid States (Green border + check icon) */
+.form-input.input-valid,
+.form-select.input-valid {
+  border-color: var(--color-success);
+}
+
+.valid-check-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-success);
+  display: none;
+  pointer-events: none;
+}
+
+.form-control-wrap.is-valid .valid-check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-control-wrap.has-select.is-valid .valid-check-icon {
+  right: 2.5rem;
+}
+
+.field-helper {
+  font-family: var(--font-body) !important;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin-top: 0.25rem;
 }
 
 .field-error {
-  font-size: 0.775rem;
+  font-family: var(--font-body) !important;
+  font-size: 13px;
   color: var(--color-error);
   font-weight: 500;
-  margin-top: 0.2rem;
+  line-height: 1.4;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.field-error.d-none {
+  display: none !important;
+}
+
+.field-error .error-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .form-submit-row {
@@ -1644,43 +1848,12 @@ a:hover {
    Responsive Breakpoints: 360px, 768px, 1280px (No horizontal scroll)
    -------------------------------------------------------------------------- */
 
-/* Tablet & Mobile (< 768px) */
-@media (max-width: 768px) {
-  /* Hero collapses to single column on mobile */
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints: 360px, 414px, 640px, 768px, 1024px, 1100px, 1280px, 1440px, 1920px
+   -------------------------------------------------------------------------- */
 
-  .hero-text-col {
-    text-align: center;
-  }
-
-  .hero-tagline {
-    margin: 0 auto 1.5rem;
-    max-width: 100%;
-  }
-
-  .hero-dates-meta {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .hero-cta-group {
-    justify-content: center;
-  }
-
-  .hero-art-col {
-    order: -1; /* Art stacks above text on very small screens */
-    max-width: 260px;
-    margin: 0 auto;
-  }
-
-  .hero-countdown-row .countdown-container {
-    max-width: 100%;
-  }
-
+/* Navbar collapses to hamburger below 1100px to prevent clipping/overflow */
+@media (max-width: 1099px) {
   .primary-nav {
     position: fixed;
     top: var(--navbar-height);
@@ -1730,14 +1903,48 @@ a:hover {
   .mobile-toggle {
     display: flex;
   }
+}
+
+/* Tablet & Mobile (< 768px) */
+@media (max-width: 768px) {
+  /* Hero collapses to single column on mobile */
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-text-col {
+    text-align: center;
+  }
+
+  .hero-tagline {
+    margin: 0 auto 1.5rem;
+    max-width: 100%;
+  }
+
+  .hero-dates-meta {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-art-col {
+    order: -1;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .hero-countdown-row .countdown-container {
+    max-width: 100%;
+  }
 
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
   }
 
   .countdown-grid {
@@ -1746,6 +1953,22 @@ a:hover {
 
   .schedule-cards-grid.parallel-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile (< 640px): Form collapses to exactly one column */
+@media (max-width: 639px) {
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .form-label {
+    white-space: normal;
+  }
+
+  .btn-form-submit {
+    width: 100%;
   }
 }
 

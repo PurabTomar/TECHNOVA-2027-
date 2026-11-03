@@ -60,19 +60,38 @@
   ];
 
   /**
-   * Validate a single input field and toggle error feedback
+   * Keep select color muted while placeholder is selected, normal after choice
+   */
+  function updateSelectState(selectEl) {
+    if (!selectEl) return;
+    if (!selectEl.value || selectEl.value === '') {
+      selectEl.classList.add('select-placeholder');
+    } else {
+      selectEl.classList.remove('select-placeholder');
+    }
+  }
+
+  /**
+   * Validate a single input field and toggle error feedback & valid check icon
    */
   function validateField(fieldConfig) {
     const inputEl = document.getElementById(fieldConfig.id);
     const errorEl = document.getElementById(fieldConfig.errorId);
     if (!inputEl || !errorEl) return true;
 
-    const isValid = fieldConfig.validator(inputEl.value);
+    const wrapEl = inputEl.closest('.form-control-wrap');
+    const val = inputEl.value;
+    const isValid = fieldConfig.validator(val);
+    const hasValue = val.trim().length > 0;
 
     if (!isValid) {
       inputEl.classList.add('input-invalid');
+      inputEl.classList.remove('input-valid');
       inputEl.setAttribute('aria-invalid', 'true');
-      errorEl.textContent = fieldConfig.message;
+      if (wrapEl) {
+        wrapEl.classList.remove('is-valid');
+      }
+      errorEl.innerHTML = `<span class="error-icon" aria-hidden="true">⚠</span> <span>${fieldConfig.message}</span>`;
       errorEl.classList.remove('d-none');
       return false;
     } else {
@@ -80,6 +99,19 @@
       inputEl.setAttribute('aria-invalid', 'false');
       errorEl.textContent = '';
       errorEl.classList.add('d-none');
+
+      // For valid states: show check icon only if non-empty (or valid selection)
+      if (hasValue) {
+        inputEl.classList.add('input-valid');
+        if (wrapEl) {
+          wrapEl.classList.add('is-valid');
+        }
+      } else {
+        inputEl.classList.remove('input-valid');
+        if (wrapEl) {
+          wrapEl.classList.remove('is-valid');
+        }
+      }
       return true;
     }
   }
@@ -118,6 +150,8 @@
         selectEl.value = matched.id;
       }
     }
+
+    updateSelectState(selectEl);
   }
 
   /**
@@ -156,13 +190,14 @@
 
     const eventObj = FESTIVAL_EVENTS.find(e => e.id === submissionData.eventId) || {
       title: submissionData.eventId,
-      venue: VENUE_NAME,
+      venue: typeof VENUE_NAME !== 'undefined' ? VENUE_NAME : 'SATI Vidisha Campus',
       date: FEST_DAYS[0],
       start: '10:00',
       end: '12:00',
       category: 'Festival Track'
     };
 
+    const collegeLogo = (typeof COLLEGE_LOGO !== 'undefined' && COLLEGE_LOGO) ? COLLEGE_LOGO : 'assets/sati-logo.svg';
     const ticketPill = typeof getThemeCopy === 'function' ? getThemeCopy('ticketPassPill', 'Boarding Pass Confirmed') : 'Boarding Pass Confirmed';
     const ticketHeader = typeof getThemeCopy === 'function' ? getThemeCopy('ticketPassHeader', 'TECHNOVA PASS') : 'TECHNOVA PASS';
 
@@ -181,7 +216,11 @@
         <div class="pass-ticket">
           <div class="ticket-header">
             <div class="ticket-fest-brand">
-              <span class="brand-badge-icon" aria-hidden="true">✦</span> ${ticketHeader}
+              <div class="college-logo-badge mini-logo-badge" aria-hidden="true">
+                <img src="${collegeLogo}" alt="SATI Emblem" width="20" height="20">
+              </div>
+              <span class="brand-badge-icon" aria-hidden="true">✦</span>
+              <span>${ticketHeader}</span>
             </div>
             <div class="ticket-ref-id">
               <span class="ref-label">REF ID:</span>
@@ -261,19 +300,27 @@
         if (form) form.reset();
         populateEventDropdown();
 
-        // Clear all inline error states
+        // Clear all inline error and valid states
         FIELD_CONFIGS.forEach(cfg => {
           const input = document.getElementById(cfg.id);
           const err = document.getElementById(cfg.errorId);
           if (input) {
             input.classList.remove('input-invalid');
+            input.classList.remove('input-valid');
             input.setAttribute('aria-invalid', 'false');
+            const wrap = input.closest('.form-control-wrap');
+            if (wrap) wrap.classList.remove('is-valid');
           }
           if (err) {
             err.textContent = '';
             err.classList.add('d-none');
           }
         });
+
+        const ySelect = document.getElementById('regYear');
+        const eSelect = document.getElementById('regEvent');
+        updateSelectState(ySelect);
+        updateSelectState(eSelect);
 
         isSubmitting = false;
         const submitBtn = document.getElementById('formSubmitBtn');
@@ -305,6 +352,24 @@
         });
       }
     });
+
+    const yearSelect = document.getElementById('regYear');
+    if (yearSelect) {
+      updateSelectState(yearSelect);
+      yearSelect.addEventListener('change', () => {
+        updateSelectState(yearSelect);
+        validateField(FIELD_CONFIGS.find(c => c.id === 'regYear'));
+      });
+    }
+
+    const eventSelect = document.getElementById('regEvent');
+    if (eventSelect) {
+      updateSelectState(eventSelect);
+      eventSelect.addEventListener('change', () => {
+        updateSelectState(eventSelect);
+        validateField(FIELD_CONFIGS.find(c => c.id === 'regEvent'));
+      });
+    }
 
     form.addEventListener('submit', e => {
       e.preventDefault();

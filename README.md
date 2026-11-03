@@ -142,3 +142,13 @@ Events sharing a time slot are grouped under **one time heading** and displayed 
 - [x] Visible "How to read this schedule" note on `schedule.html`
 - [x] Schedule overlap logic: same-start groups, partial overlap groups, back-to-back does NOT group
 - [x] Automated `tests.js` verifies all 4 overlap cases â€” runs on `schedule.html?test=1`
+
+---
+
+## Form Layout & SATI Branding Audit Pass
+
+- **Form Layout**: Root cause fixed with global ox-sizing: border-box, width: min(100%, 880px) centered card, grid-template-columns: repeat(2, minmax(0, 1fr)) with min-width: 0 on children, and 48px equal-height form controls. Collapses to 1 column below 640px.
+- **Labels & Typography**: Enforced body font (ar(--font-body)) on labels, inputs, and helpers (no slashed zero "1Ø"). Single-line labels with .label-badge-optional badge, format hint moved to helper text below input.
+- **Branding**: Official Samrat Ashok Technological Institute (SATI), Vidisha vector emblem (ssets/sati-logo.svg) mounted on .college-logo-badge (round white badge for dark-theme contrast) in navbar brand, hero metadata, ticket confirmation pass, footer, and as SVG favicon.
+- **Selects & Validation**: Custom inline SVG chevrons driven by theme CSS variables, .select-placeholder muted color handling, datalist for colleges with SATI Vidisha first, and accessible error/valid states (check icon, warning icon with text, clear focus rings).
+- **Navbar**: Responsive collapse breakpoint set to 1099px to prevent link clipping; Register CTA dynamically hidden on contact.html.

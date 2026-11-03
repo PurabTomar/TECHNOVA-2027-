@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Register for TECHNOVA 2027 and Code Crack 3.0 Hackathon events.">
   <title>Register & Contact • TECHNOVA 2027</title>
+  <link rel="icon" type="image/svg+xml" href="assets/sati-logo.svg">
 
   <!-- Theme Stylesheets -->
   <link rel="stylesheet" href="css/variables.css">
@@ -34,122 +35,172 @@
 
       <!-- Registration Form Section -->
       <section id="registrationFormSection" class="form-shell-card" aria-label="Registration Form">
+        <!-- Required Legend -->
+        <div class="form-header-intro">
+          <p class="form-legend">Fields marked with <span class="req-star" aria-hidden="true">*</span> are required</p>
+        </div>
+
         <form id="registrationForm" novalidate>
           <div class="form-grid">
             <!-- Full Name (Required) -->
             <div class="form-group">
               <label for="regName" class="form-label">
-                Full Name <span class="req-star" aria-hidden="true">*</span>
+                <span class="form-label-text">Full Name <span class="req-star" aria-hidden="true">*</span></span>
               </label>
-              <input 
-                type="text" 
-                id="regName" 
-                name="name" 
-                class="form-input" 
-                placeholder="e.g. Alex Rivera" 
-                required 
-                autocomplete="name"
-                aria-describedby="nameError"
-                aria-invalid="false"
-              >
+              <div class="form-control-wrap">
+                <input 
+                  type="text" 
+                  id="regName" 
+                  name="name" 
+                  class="form-input" 
+                  placeholder="Your full name" 
+                  required 
+                  autocomplete="name"
+                  aria-describedby="nameError"
+                  aria-invalid="false"
+                >
+                <span class="valid-check-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </div>
               <div class="field-error d-none" id="nameError" role="alert" aria-live="polite"></div>
             </div>
 
             <!-- Email Address (Required + Format Check) -->
             <div class="form-group">
               <label for="regEmail" class="form-label">
-                Official Email <span class="req-star" aria-hidden="true">*</span>
+                <span class="form-label-text">Official Email <span class="req-star" aria-hidden="true">*</span></span>
               </label>
-              <input 
-                type="email" 
-                id="regEmail" 
-                name="email" 
-                class="form-input" 
-                placeholder="e.g. alex@university.edu" 
-                required 
-                autocomplete="email"
-                aria-describedby="emailError"
-                aria-invalid="false"
-              >
+              <div class="form-control-wrap">
+                <input 
+                  type="email" 
+                  id="regEmail" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="e.g. name@example.com" 
+                  required 
+                  autocomplete="email"
+                  aria-describedby="emailError"
+                  aria-invalid="false"
+                >
+                <span class="valid-check-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </div>
               <div class="field-error d-none" id="emailError" role="alert" aria-live="polite"></div>
             </div>
 
             <!-- Contact Phone (Optional, 10 digits if filled) -->
             <div class="form-group">
               <label for="regPhone" class="form-label">
-                Phone Number <span class="form-hint">(Optional, 10 digits)</span>
+                <span class="form-label-text">Phone Number</span>
+                <span class="label-badge-optional">Optional</span>
               </label>
-              <input 
-                type="tel" 
-                id="regPhone" 
-                name="phone" 
-                class="form-input" 
-                placeholder="e.g. 9876543210" 
-                maxlength="10"
-                autocomplete="tel"
-                aria-describedby="phoneError"
-                aria-invalid="false"
-              >
+              <div class="form-control-wrap">
+                <input 
+                  type="tel" 
+                  id="regPhone" 
+                  name="phone" 
+                  class="form-input" 
+                  placeholder="10-digit mobile number" 
+                  maxlength="10"
+                  autocomplete="tel"
+                  aria-describedby="phoneHint phoneError"
+                  aria-invalid="false"
+                >
+                <span class="valid-check-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </div>
+              <div class="field-helper" id="phoneHint">Must be 10 digits if provided</div>
               <div class="field-error d-none" id="phoneError" role="alert" aria-live="polite"></div>
             </div>
 
-            <!-- College / University (Required) -->
+            <!-- College / University (Required with datalist having SATI first) -->
             <div class="form-group">
               <label for="regCollege" class="form-label">
-                College / Institution <span class="req-star" aria-hidden="true">*</span>
+                <span class="form-label-text">College / Institution <span class="req-star" aria-hidden="true">*</span></span>
               </label>
-              <input 
-                type="text" 
-                id="regCollege" 
-                name="college" 
-                class="form-input" 
-                placeholder="e.g. Institute of Technology" 
-                required 
-                aria-describedby="collegeError"
-                aria-invalid="false"
-              >
+              <div class="form-control-wrap">
+                <input 
+                  type="text" 
+                  id="regCollege" 
+                  name="college" 
+                  class="form-input" 
+                  list="collegeList" 
+                  placeholder="Select or type your institution" 
+                  required 
+                  aria-describedby="collegeError"
+                  aria-invalid="false"
+                >
+                <span class="valid-check-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </div>
+              <datalist id="collegeList">
+                <option value="Samrat Ashok Technological Institute (SATI), Vidisha"></option>
+                <option value="University Institute of Technology, RGPV Bhopal"></option>
+                <option value="Maulana Azad National Institute of Technology (MANIT), Bhopal"></option>
+                <option value="Indian Institute of Technology (IIT), Indore"></option>
+                <option value="Madhav Institute of Technology & Science (MITS), Gwalior"></option>
+                <option value="Jabalpur Engineering College (JEC), Jabalpur"></option>
+              </datalist>
               <div class="field-error d-none" id="collegeError" role="alert" aria-live="polite"></div>
             </div>
 
             <!-- Academic Year (Required) -->
             <div class="form-group">
               <label for="regYear" class="form-label">
-                Year of Study <span class="req-star" aria-hidden="true">*</span>
+                <span class="form-label-text">Year of Study <span class="req-star" aria-hidden="true">*</span></span>
               </label>
-              <select id="regYear" name="year" class="form-select" required aria-describedby="yearError" aria-invalid="false">
-                <option value="" disabled selected>— Select Year —</option>
-                <option value="1st Year">1st Year (Freshman)</option>
-                <option value="2nd Year">2nd Year (Sophomore)</option>
-                <option value="3rd Year">3rd Year (Junior)</option>
-                <option value="4th Year">4th Year (Senior)</option>
-                <option value="Postgraduate">Postgraduate / Masters</option>
-              </select>
+              <div class="form-control-wrap has-select">
+                <select id="regYear" name="year" class="form-select select-placeholder" required aria-describedby="yearError" aria-invalid="false">
+                  <option value="" disabled selected>— Select Year —</option>
+                  <option value="1st Year">1st Year (Freshman)</option>
+                  <option value="2nd Year">2nd Year (Sophomore)</option>
+                  <option value="3rd Year">3rd Year (Junior)</option>
+                  <option value="4th Year">4th Year (Senior)</option>
+                  <option value="Postgraduate">Postgraduate / Masters</option>
+                </select>
+                <span class="valid-check-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </div>
               <div class="field-error d-none" id="yearError" role="alert" aria-live="polite"></div>
             </div>
 
             <!-- Event Dropdown (From data.js, preselected by ?event=) -->
             <div class="form-group">
               <label for="regEvent" class="form-label">
-                Select Event <span class="req-star" aria-hidden="true">*</span>
+                <span class="form-label-text">Select Event <span class="req-star" aria-hidden="true">*</span></span>
               </label>
-              <select id="regEvent" name="event" class="form-select" required aria-describedby="eventError" aria-invalid="false">
-                <option value="" disabled selected>Loading available arenas...</option>
-              </select>
+              <div class="form-control-wrap has-select">
+                <select id="regEvent" name="event" class="form-select select-placeholder" required aria-describedby="eventError" aria-invalid="false">
+                  <option value="" disabled selected>Loading available arenas...</option>
+                </select>
+                <span class="valid-check-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </div>
               <div class="field-error d-none" id="eventError" role="alert" aria-live="polite"></div>
             </div>
 
             <!-- Message / Notes (Optional) -->
             <div class="form-group form-group-full">
               <label for="regMessage" class="form-label">
-                Additional Notes / Team Members <span class="form-hint">(Optional)</span>
+                <span class="form-label-text">Additional Notes / Team</span>
+                <span class="label-badge-optional">Optional</span>
               </label>
-              <textarea 
-                id="regMessage" 
-                name="message" 
-                class="form-textarea" 
-                rows="3" 
-                placeholder="Specify teammates' names or hardware requirements (e.g. LAN cables, battery adapters)..."
-              ></textarea>
+              <div class="form-control-wrap">
+                <textarea 
+                  id="regMessage" 
+                  name="message" 
+                  class="form-textarea" 
+                  rows="3" 
+                  placeholder="Any special requirements, team member names, or questions..."
+                ></textarea>
+              </div>
+              <div class="field-helper">Specify teammates' names or hardware requirements (e.g. LAN cables, power strips)</div>
             </div>
           </div>
 

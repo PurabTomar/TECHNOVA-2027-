@@ -49,12 +49,25 @@
 
     const festName = typeof FEST_NAME !== 'undefined' ? FEST_NAME : 'TECHNOVA';
     const festYear = typeof FEST_YEAR !== 'undefined' ? FEST_YEAR : '2027';
+    const collegeLogo = (typeof COLLEGE_LOGO !== 'undefined' && COLLEGE_LOGO) ? COLLEGE_LOGO : 'assets/sati-logo.svg';
+    const isContactPage = currentPage === 'contact.html';
+
+    const ctaHtml = isContactPage ? '' : `
+      <div class="nav-cta-wrapper">
+        <a href="contact.html" class="btn btn-primary nav-cta-btn">
+          <span>Register Now</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    `;
 
     navPlaceholder.innerHTML = `
       <header class="site-header">
         <div class="nav-container">
-          <a href="index.html" class="brand-logo" aria-label="${festName} ${festYear} Home">
-            <span class="brand-icon" aria-hidden="true">✦</span>
+          <a href="index.html" class="brand-logo" aria-label="${festName} ${festYear} Home - SATI Vidisha">
+            <div class="college-logo-badge" aria-hidden="true">
+              <img src="${collegeLogo}" alt="SATI Emblem" width="32" height="32">
+            </div>
             <div class="brand-text-group">
               <span class="brand-name">${festName}</span>
               <span class="brand-year">${festYear}</span>
@@ -71,12 +84,7 @@
             <ul class="nav-list">
               ${linksHtml}
             </ul>
-            <div class="nav-cta-wrapper">
-              <a href="contact.html" class="btn btn-primary nav-cta-btn">
-                <span>Register Now</span>
-                <span class="btn-arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
+            ${ctaHtml}
           </nav>
         </div>
       </header>
@@ -89,6 +97,7 @@
 
     const festName = typeof FEST_NAME !== 'undefined' ? FEST_NAME : 'TECHNOVA';
     const festYear = typeof FEST_YEAR !== 'undefined' ? FEST_YEAR : '2027';
+    const collegeLogo = (typeof COLLEGE_LOGO !== 'undefined' && COLLEGE_LOGO) ? COLLEGE_LOGO : 'assets/sati-logo.svg';
     const email = typeof CONTACT_EMAIL !== 'undefined' ? CONTACT_EMAIL : 'fest@example.edu';
     const venue = typeof VENUE_NAME !== 'undefined' ? VENUE_NAME : 'University Central Campus';
     const datesStr = (typeof FEST_DAYS !== 'undefined' && FEST_DAYS.length >= 2)
@@ -109,13 +118,19 @@
           <div class="footer-grid">
             <div class="footer-col brand-col">
               <div class="brand-logo footer-logo">
-                <span class="brand-icon" aria-hidden="true">✦</span>
-                <span class="brand-name">${festName}</span>
-                <span class="brand-year">${festYear}</span>
+                <div class="college-logo-badge footer-logo-badge" aria-hidden="true">
+                  <img src="${collegeLogo}" alt="SATI Emblem" width="32" height="32">
+                </div>
+                <div class="brand-text-group">
+                  <span class="brand-name">${festName}</span>
+                  <span class="brand-year">${festYear}</span>
+                </div>
               </div>
               <p class="footer-tagline" data-theme-copy="footerTagline">${footerTagline}</p>
               <div class="fest-dates-badge">
-                <span aria-hidden="true">🗓</span>
+                <div class="college-logo-badge mini-logo-badge" aria-hidden="true">
+                  <img src="${collegeLogo}" alt="SATI" width="20" height="20">
+                </div>
                 <span>${datesStr} • ${venue}</span>
               </div>
             </div>

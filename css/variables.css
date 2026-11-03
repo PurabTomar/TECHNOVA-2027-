@@ -13,68 +13,68 @@
   --font-display: 'Orbitron', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-  /* Backgrounds */
-  --color-bg-base: #060814;
-  --color-bg-deep: #0a0d24;
-  --color-bg-surface: #0f1438;
-  --color-bg-card: rgba(16, 22, 58, 0.75);
-  --color-bg-card-hover: rgba(24, 32, 82, 0.88);
-  --color-bg-card-solid: #121844;
-  --color-bg-overlay: rgba(6, 8, 20, 0.90);
-  --color-bg-input: rgba(10, 14, 38, 0.85);
+  /* Backgrounds: Deep Obsidian Void & Cosmic Nebula Layers */
+  --color-bg-base: #040612;
+  --color-bg-deep: #070b22;
+  --color-bg-surface: #0c1236;
+  --color-bg-card: rgba(12, 18, 52, 0.80);
+  --color-bg-card-hover: rgba(20, 29, 78, 0.92);
+  --color-bg-card-solid: #0e163e;
+  --color-bg-overlay: rgba(4, 6, 18, 0.92);
+  --color-bg-input: rgba(8, 12, 34, 0.90);
 
-  /* Primary Accent: Neon Cyan */
-  --color-accent-primary: #00f3ff;
-  --color-accent-primary-bright: #38f9d7;
+  /* Primary Accent: Ultra-Vivid Laser Cyan */
+  --color-accent-primary: #00f5ff;
+  --color-accent-primary-bright: #57fdf2;
   --color-accent-primary-dim: #00b4d8;
-  --color-accent-primary-faint: rgba(0, 243, 255, 0.12);
-  --color-accent-primary-border: rgba(0, 243, 255, 0.35);
+  --color-accent-primary-faint: rgba(0, 245, 255, 0.14);
+  --color-accent-primary-border: rgba(0, 245, 255, 0.40);
 
-  /* Secondary Accent: Nebula Violet */
-  --color-accent-secondary: #9d4edd;
-  --color-accent-secondary-glow: #bd00ff;
-  --color-accent-secondary-dim: #491380;
-  --color-accent-secondary-faint: rgba(157, 78, 221, 0.15);
-  --color-accent-secondary-border: rgba(189, 0, 255, 0.35);
+  /* Secondary Accent: Electric Cosmic Violet */
+  --color-accent-secondary: #a855f7;
+  --color-accent-secondary-glow: #c084fc;
+  --color-accent-secondary-dim: #581c87;
+  --color-accent-secondary-faint: rgba(168, 85, 247, 0.18);
+  --color-accent-secondary-border: rgba(168, 85, 247, 0.42);
 
-  /* Text Colors */
-  --color-text-primary: #f0f4fc;
-  --color-text-secondary: #a9b7d0;
-  --color-text-muted: #6e7d9c;
-  --color-text-contrast: #060814;
+  /* Text Colors: Pure Luminescent Star White & Crisp Silver */
+  --color-text-primary: #f8faff;
+  --color-text-secondary: #b0c2de;
+  --color-text-muted: #7284a6;
+  --color-text-contrast: #040612;
 
-  /* Categories */
-  --cat-tech-color: #00f3ff;
-  --cat-tech-bg: rgba(0, 243, 255, 0.15);
-  --cat-tech-border: rgba(0, 243, 255, 0.45);
+  /* Categories: High-Vibrancy Luminous Badges */
+  --cat-tech-color: #00f5ff;
+  --cat-tech-bg: rgba(0, 245, 255, 0.16);
+  --cat-tech-border: rgba(0, 245, 255, 0.50);
 
-  --cat-cultural-color: #ff4df0;
-  --cat-cultural-bg: rgba(255, 77, 240, 0.15);
-  --cat-cultural-border: rgba(255, 77, 240, 0.45);
+  --cat-cultural-color: #fb7185;
+  --cat-cultural-bg: rgba(251, 113, 133, 0.16);
+  --cat-cultural-border: rgba(251, 113, 133, 0.50);
 
-  --cat-gaming-color: #00ff88;
-  --cat-gaming-bg: rgba(0, 255, 136, 0.15);
-  --cat-gaming-border: rgba(0, 255, 136, 0.45);
+  --cat-gaming-color: #34d399;
+  --cat-gaming-bg: rgba(52, 211, 153, 0.16);
+  --cat-gaming-border: rgba(52, 211, 153, 0.50);
 
   /* Functional Status */
-  --color-success: #00ff88;
-  --color-success-bg: rgba(0, 255, 136, 0.15);
+  --color-success: #34d399;
+  --color-success-bg: rgba(52, 211, 153, 0.16);
   --color-error: #ff3366;
-  --color-error-bg: rgba(255, 51, 102, 0.15);
-  --color-error-border: rgba(255, 51, 102, 0.6);
+  --color-error-bg: rgba(255, 51, 102, 0.16);
+  --color-error-border: rgba(255, 51, 102, 0.65);
 
   /* Borders & Shadows */
-  --border-subtle: rgba(140, 160, 220, 0.16);
+  --border-subtle: rgba(120, 155, 230, 0.20);
   --border-focus: var(--color-accent-primary);
   --border-radius-sm: 6px;
   --border-radius-md: 12px;
   --border-radius-lg: 18px;
   --border-radius-full: 9999px;
 
-  --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
-  --shadow-hover: 0 16px 40px 0 rgba(0, 243, 255, 0.18), 0 0 25px 0 rgba(121, 40, 202, 0.25);
-  --shadow-accent-glow: 0 0 18px rgba(0, 243, 255, 0.5);
-  --shadow-secondary-glow: 0 0 18px rgba(189, 0, 255, 0.5);
+  --shadow-card: 0 10px 36px 0 rgba(0, 0, 0, 0.55);
+  --shadow-hover: 0 18px 45px 0 rgba(0, 245, 255, 0.22), 0 0 30px 0 rgba(168, 85, 247, 0.28);
+  --shadow-accent-glow: 0 0 20px rgba(0, 245, 255, 0.60);
+  --shadow-secondary-glow: 0 0 20px rgba(192, 132, 252, 0.60);
 
   /* Sizing & Constants */
   --navbar-height: 72px;

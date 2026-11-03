@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore events and tournaments at TECHNOVA 2027.">
+  <meta name="description" content="Explore events, competitive coding arenas, and tournaments at TECHNOVA 2027.">
   <title>Events • TECHNOVA 2027</title>
+  <link rel="icon" type="image/svg+xml" href="assets/sati-logo.svg">
 
   <!-- Theme Stylesheets -->
-  <link rel="icon" type="image/svg+xml" href="assets/sati-logo.svg">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -33,8 +33,32 @@
         </p>
       </header>
 
-      <!-- Combinable Filters Toolbar -->
-      <section class="filter-toolbar" aria-label="Event Filtering Controls">
+      <!-- Combinable Filters & Discovery Toolbar -->
+      <section class="filter-toolbar" aria-label="Event Filtering and Discovery Controls">
+        <!-- Debounced Search Box -->
+        <div class="search-bar-row">
+          <div class="search-input-wrap">
+            <span class="search-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </span>
+            <input 
+              type="search" 
+              id="eventSearchInput" 
+              class="search-input" 
+              placeholder="Search by event title, description, venue, track..." 
+              aria-label="Search events by title, description, venue, or category"
+              autocomplete="off"
+              spellcheck="false"
+            >
+            <kbd class="search-kbd" title="Press / anywhere to focus search">/</kbd>
+            <button type="button" class="btn-clear-search d-none" id="clearSearchBtn" aria-label="Clear search query">✕</button>
+          </div>
+        </div>
+
+        <!-- Primary Filter Chips Row (Category & Day) -->
         <div class="filter-row">
           <!-- Category Filter Buttons -->
           <div class="filter-group" role="group" aria-label="Filter by Category">
@@ -54,12 +78,73 @@
           </div>
         </div>
 
-        <!-- Filter Status & Quick Reset -->
+        <!-- Secondary Controls Row (Venue, Time of Day, Saved Only, Sort) -->
+        <div class="filter-controls-row">
+          <!-- Venue Filter Dropdown -->
+          <div class="filter-control-item">
+            <label for="venueFilterSelect" class="control-label">Venue:</label>
+            <div class="filter-select-wrap">
+              <select id="venueFilterSelect" class="filter-select" aria-label="Filter events by venue">
+                <option value="All">All Venues</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Time of Day Dropdown -->
+          <div class="filter-control-item">
+            <label for="todFilterSelect" class="control-label">Time of Day:</label>
+            <div class="filter-select-wrap">
+              <select id="todFilterSelect" class="filter-select" aria-label="Filter events by time of day">
+                <option value="All">All Times</option>
+                <option value="morning">Morning (&lt; 12:00)</option>
+                <option value="afternoon">Afternoon (12:00 – 17:00)</option>
+                <option value="evening">Evening (&gt; 17:00)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Saved Only Toggle Button -->
+          <div class="filter-control-item">
+            <span class="control-label">Bookmarks:</span>
+            <button type="button" class="filter-pill filter-saved-pill" id="savedFilterBtn" aria-pressed="false" aria-label="Show only bookmarked events">
+              <span aria-hidden="true">🔖</span>
+              <span>Saved Only</span>
+              <span class="saved-count-pill" id="savedCountBadge">0</span>
+            </button>
+          </div>
+
+          <!-- Sort Select -->
+          <div class="filter-control-item filter-control-sort">
+            <label for="sortSelect" class="control-label">Sort By:</label>
+            <div class="filter-select-wrap">
+              <select id="sortSelect" class="filter-select" aria-label="Sort events list">
+                <option value="time">Time (Default)</option>
+                <option value="title">Title (A – Z)</option>
+                <option value="category">Category Track</option>
+                <option value="duration">Duration (Shortest)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Pills Bar (Shown when any filter is active) -->
+        <div class="active-pills-row d-none" id="activePillsRow" aria-label="Active filters">
+          <span class="active-pills-label">Active Filters:</span>
+          <div class="active-pills-list" id="activePillsList">
+            <!-- Populated dynamically with remove buttons -->
+          </div>
+          <button type="button" class="btn-clear-all" id="clearAllFiltersBtn" aria-label="Clear all active filters">
+            <span>↺ Clear All</span>
+          </button>
+        </div>
+
+        <!-- Filter Status & Quick Helper Note -->
         <div class="filter-status-row">
           <span class="event-count-badge" id="eventCountDisplay" aria-live="polite">Showing 12 of 12 events</span>
-          <button type="button" class="btn-clear-filters" id="clearFiltersBtn">
-            <span>↺ Reset Filters</span>
-          </button>
+          <div class="filter-meta-note">
+            <span aria-hidden="true">💡</span>
+            <span>Press <kbd class="inline-kbd">/</kbd> to search anytime</span>
+          </div>
         </div>
       </section>
 
@@ -81,4 +166,3 @@
   <script src="js/events.js"></script>
 </body>
 </html>
-

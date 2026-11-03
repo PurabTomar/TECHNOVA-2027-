@@ -93,14 +93,17 @@ function clusterOverlappingEvents(events) {
 }
 
 /**
- * Filter events for schedule based on active day and category
+ * Filter events for schedule based on active day and category using shared filterEvents
  */
 function getFilteredScheduleEvents() {
-  return FESTIVAL_EVENTS.filter(event => {
-    const matchDay = scheduleFilterState.day === 'All' || event.date === scheduleFilterState.day;
-    const matchCat = scheduleFilterState.category === 'All' || event.category.toLowerCase() === scheduleFilterState.category.toLowerCase();
-    return matchDay && matchCat;
-  });
+  if (typeof filterEvents === 'function' && typeof FESTIVAL_EVENTS !== 'undefined') {
+    return filterEvents(FESTIVAL_EVENTS, {
+      day: scheduleFilterState.day,
+      cat: scheduleFilterState.category,
+      sort: 'time'
+    });
+  }
+  return [];
 }
 
 /* ==========================================================================
@@ -319,4 +322,8 @@ if (typeof document !== 'undefined') {
       renderSchedule();
     }
   });
+}
+
+if (typeof window !== 'undefined' && window.FEST) {
+  window.FEST.clusterOverlappingEvents = clusterOverlappingEvents;
 }

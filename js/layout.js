@@ -37,6 +37,7 @@
       { label: 'Home', href: 'index.html', active: currentPage === 'index.html' || currentPage === '' },
       { label: 'Events', href: 'events.html', active: currentPage === 'events.html' },
       { label: 'Schedule', href: 'schedule.html', active: currentPage === 'schedule.html' },
+      { label: 'My Plan', href: 'plan.html', active: currentPage === 'plan.html', badgeId: 'navSavedBadge' },
       { label: 'Register', href: 'contact.html', active: currentPage === 'contact.html' }
     ];
 
@@ -44,7 +45,8 @@
     navLinks.forEach(link => {
       const activeClass = link.active ? 'nav-link active' : 'nav-link';
       const ariaCurrent = link.active ? ' aria-current="page"' : '';
-      linksHtml += `<li><a href="${link.href}" class="${activeClass}"${ariaCurrent}>${link.label}</a></li>`;
+      const badgeHtml = link.badgeId ? `<span class="nav-saved-badge d-none" id="${link.badgeId}" aria-label="Saved events count">0</span>` : '';
+      linksHtml += `<li><a href="${link.href}" class="${activeClass}"${ariaCurrent}><span>${link.label}</span>${badgeHtml}</a></li>`;
     });
 
     const festName = typeof FEST_NAME !== 'undefined' ? FEST_NAME : 'TECHNOVA';
@@ -89,6 +91,18 @@
         </div>
       </header>
     `;
+
+    function updateNavbarSavedBadge() {
+      const badge = document.getElementById('navSavedBadge');
+      if (!badge) return;
+      const savedIds = (typeof getSavedEventIds === 'function') ? getSavedEventIds() : [];
+      const count = savedIds.length;
+      badge.textContent = count;
+      badge.classList.toggle('d-none', count === 0);
+    }
+
+    updateNavbarSavedBadge();
+    window.addEventListener('fest:saved-changed', updateNavbarSavedBadge);
   }
 
   function renderFooter() {
@@ -141,7 +155,9 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">All Events</a></li>
                 <li><a href="schedule.html">Festival Schedule</a></li>
+                <li><a href="plan.html">My Plan</a></li>
                 <li><a href="contact.html">Registration & Contact</a></li>
+                <li><a href="registrations.html">My Registrations</a></li>
               </ul>
             </div>
 

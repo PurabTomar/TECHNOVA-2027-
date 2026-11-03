@@ -1,6 +1,7 @@
 /**
  * TECHNOVA 2027 - Shared Event Card Component
- * Single source of truth for event card HTML markup across Home, Events, and Schedule pages.
+ * Single source of truth for event card HTML markup across Home, Events, Schedule, and My Plan pages.
+ * Fully driven by theme variables, accessible, with bookmarking and deep linking support.
  */
 
 /**
@@ -14,9 +15,20 @@
 function renderEventCard(event, options = {}) {
   const variant = options.variant || 'grid';
   const isParallel = Boolean(options.isParallel);
-  const catMeta = getCategoryMeta(event.category);
-  const timeFormatted = `${formatTime12h(event.start)} - ${formatTime12h(event.end)}`;
-  const dateFormatted = formatDateLabel(event.date);
+  const catMeta = (typeof getCategoryMeta === 'function') ? getCategoryMeta(event.category) : { label: event.category, badgeClass: '', icon: '✦' };
+  const timeFormatted = (typeof formatTime12h === 'function') ? `${formatTime12h(event.start)} - ${formatTime12h(event.end)}` : `${event.start} - ${event.end}`;
+  const dateFormatted = (typeof formatDateLabel === 'function') ? formatDateLabel(event.date) : event.date;
+  const isSaved = (typeof isEventSaved === 'function') ? isEventSaved(event.id) : false;
+  const durationText = event.durationFormatted || (typeof formatDuration === 'function' ? formatDuration(event.duration) : '');
+
+  const saveBtnHtml = `
+    <button type="button" class="btn-card-save${isSaved ? ' is-saved' : ''}" data-action="toggle-save" data-event-id="${event.id}" aria-label="${isSaved ? 'Remove from My Plan' : 'Save to My Plan'}: ${event.title}" aria-pressed="${isSaved ? 'true' : 'false'}" title="${isSaved ? 'Saved in My Plan (Click to remove)' : 'Save to My Plan'}">
+      <svg class="bookmark-icon" width="16" height="16" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span class="sr-only">${isSaved ? 'Saved' : 'Save'}</span>
+    </button>
+  `;
 
   // Variant: Schedule item inside timeline time-slots
   if (variant === 'schedule') {
@@ -24,14 +36,20 @@ function renderEventCard(event, options = {}) {
     return `
       <div class="schedule-event-card${parallelClass}" data-category="${event.category}" data-id="${event.id}">
         <div class="schedule-card-top">
-          <span class="category-badge ${catMeta.badgeClass}">
-            <span class="cat-icon" aria-hidden="true">${catMeta.icon}</span>
-            <span>${catMeta.label}</span>
-          </span>
-          <span class="schedule-exact-time">
-            <span class="clock-icon" aria-hidden="true">⏱</span>
-            <span>${timeFormatted}</span>
-          </span>
+          <div class="schedule-badge-row">
+            <span class="category-badge ${catMeta.badgeClass}">
+              <span class="cat-icon" aria-hidden="true">${catMeta.icon}</span>
+              <span>${catMeta.label}</span>
+            </span>
+            ${durationText ? `<span class="duration-badge"><span aria-hidden="true">⏳</span> ${durationText}</span>` : ''}
+          </div>
+          <div class="schedule-top-actions">
+            <span class="schedule-exact-time">
+              <span class="clock-icon" aria-hidden="true">⏱</span>
+              <span>${timeFormatted}</span>
+            </span>
+            ${saveBtnHtml}
+          </div>
         </div>
 
         <h3 class="schedule-card-title">${event.title}</h3>
@@ -42,6 +60,9 @@ function renderEventCard(event, options = {}) {
         <p class="schedule-card-desc">${event.description}</p>
 
         <div class="schedule-card-actions">
+          <button type="button" class="btn btn-ghost btn-sm card-details-btn" data-action="open-details" data-event-id="${event.id}" aria-label="View guidelines for ${event.title}">
+            <span>Guidelines</span>
+          </button>
           <a href="contact.html?event=${encodeURIComponent(event.id)}" class="btn btn-secondary btn-sm" aria-label="Register for ${event.title}">
             <span>Register</span>
             <span class="btn-arrow" aria-hidden="true">→</span>
@@ -57,14 +78,20 @@ function renderEventCard(event, options = {}) {
       <div class="event-card-stripe" aria-hidden="true"></div>
       <div class="event-card-body">
         <div class="event-card-header">
-          <span class="category-badge ${catMeta.badgeClass}">
-            <span class="cat-icon" aria-hidden="true">${catMeta.icon}</span>
-            <span>${catMeta.label}</span>
-          </span>
-          <span class="event-venue-chip">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="icon-svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
-            <span>${event.venue}</span>
-          </span>
+          <div class="event-badges-group">
+            <span class="category-badge ${catMeta.badgeClass}">
+              <span class="cat-icon" aria-hidden="true">${catMeta.icon}</span>
+              <span>${catMeta.label}</span>
+            </span>
+            ${durationText ? `<span class="duration-badge"><span aria-hidden="true">⏳</span> ${durationText}</span>` : ''}
+          </div>
+          <div class="header-right-actions">
+            <span class="event-venue-chip">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="icon-svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+              <span>${event.venue}</span>
+            </span>
+            ${saveBtnHtml}
+          </div>
         </div>
 
         <h3 class="event-card-title">${event.title}</h3>
@@ -82,12 +109,21 @@ function renderEventCard(event, options = {}) {
             </div>
           </div>
 
-          <a href="contact.html?event=${encodeURIComponent(event.id)}" class="btn btn-secondary card-register-btn" aria-label="Register for ${event.title}">
-            <span>Register</span>
-            <span class="btn-arrow" aria-hidden="true">→</span>
-          </a>
+          <div class="event-card-btn-group">
+            <button type="button" class="btn btn-ghost btn-sm card-details-btn" data-action="open-details" data-event-id="${event.id}" aria-label="View rules for ${event.title}">
+              <span>Rules</span>
+            </button>
+            <a href="contact.html?event=${encodeURIComponent(event.id)}" class="btn btn-secondary card-register-btn" aria-label="Register for ${event.title}">
+              <span>Register</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </div>
     </article>
   `;
+}
+
+if (typeof window !== 'undefined' && window.FEST) {
+  window.FEST.renderEventCard = renderEventCard;
 }

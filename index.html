@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TECHNOVA 2027 - Code Crack 3.0 Hackathon & College Tech-Cultural Festival.">
+  <title>TECHNOVA 2027 • Code Crack 3.0 Festival</title>
+
+  <!-- Theme Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Theme-Neutral Background System -->
+  <div class="bg-pattern" aria-hidden="true">
+    <div class="bg-layer-1"></div>
+    <div class="bg-layer-2"></div>
+  </div>
+
+  <!-- Shared Navbar Injected via js/layout.js -->
+  <div id="navbar-mount"></div>
+
+  <!-- Main Hero & Showcase -->
+  <main id="main-content" class="site-main">
+    <section class="hero-section container">
+      <div class="hero-pill-badge">
+        <span class="brand-badge-icon" aria-hidden="true">✦</span>
+        <span data-theme-copy="heroKicker">CODE CRACK 3.0 HACKATHON & ANNUAL FEST</span>
+      </div>
+
+      <h1 class="hero-main-title">TECHNOVA 2027</h1>
+
+      <p class="hero-tagline" data-theme-copy="heroTagline">
+        Transcending boundaries across the tech cosmos, cultural stages, and competitive arenas.
+      </p>
+
+      <div class="hero-dates-meta">
+        <span aria-hidden="true">🗓</span>
+        <span>12 – 13 February 2027 • University Central Campus</span>
+      </div>
+
+      <div class="hero-cta-group">
+        <a href="contact.html" class="btn btn-primary">
+          <span>Register Now</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="events.html" class="btn btn-secondary">
+          <span data-theme-copy="heroCtaExplore">Explore All Events</span>
+        </a>
+        <a href="schedule.html" class="btn btn-ghost">
+          <span data-theme-copy="heroCtaSchedule">View Schedule</span>
+        </a>
+      </div>
+
+      <!-- Live Countdown Timer (Accessible role="timer" without per-second live spam) -->
+      <div class="countdown-container" id="festCountdownWrapper" role="timer" aria-label="Festival Launch Countdown">
+        <div class="countdown-title" id="countdownLabel">
+          <span class="status-pulse-dot" aria-hidden="true"></span>
+          <span data-theme-copy="countdownTitle">Mission Launch Countdown</span>
+        </div>
+
+        <div class="countdown-grid" id="festCountdown" aria-hidden="false">
+          <div class="countdown-box">
+            <span class="countdown-digit" id="countDays">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-digit" id="countHours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-digit" id="countMinutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-digit" id="countSeconds">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Derived Metrics Strip (Computed dynamically from data.js) -->
+    <section class="container stats-strip" aria-label="Festival Metrics">
+      <div class="stats-grid" id="festDerivedStats">
+        <!-- Rendered dynamically from data.js -->
+      </div>
+    </section>
+
+    <!-- Featured Highlights Section -->
+    <section class="container mt-4">
+      <div class="section-header-row">
+        <div>
+          <span class="page-pretitle" data-theme-copy="featuredPretitle">Selected Arenas</span>
+          <h2 class="page-title" data-theme-copy="featuredTitle">Featured Highlights</h2>
+          <p class="page-description" data-theme-copy="featuredSubtitle">
+            Headline challenges across algorithmic problem solving, hackathons, and robotics.
+          </p>
+        </div>
+        <a href="events.html" class="btn btn-secondary">
+          <span>View All Events</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="events-grid" id="featuredEventsGrid">
+        <!-- Rendered dynamically via js/card.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer Injected via js/layout.js -->
+  <div id="footer-mount"></div>
+
+  <!-- Standard Scripts (Order Preserved: theme -> data -> card -> layout -> home) -->
+  <script src="js/theme.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/card.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

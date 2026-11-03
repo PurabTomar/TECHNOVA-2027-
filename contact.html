@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register for TECHNOVA 2027 and Code Crack 3.0 Hackathon events.">
+  <title>Register & Contact • TECHNOVA 2027</title>
+
+  <!-- Theme Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Theme-Neutral Background System -->
+  <div class="bg-pattern" aria-hidden="true">
+    <div class="bg-layer-1"></div>
+    <div class="bg-layer-2"></div>
+  </div>
+
+  <!-- Shared Navbar Injected via js/layout.js -->
+  <div id="navbar-mount"></div>
+
+  <!-- Main Content -->
+  <main id="main-content" class="site-main">
+    <div class="container">
+      <!-- Page Header -->
+      <header class="page-header">
+        <span class="page-pretitle" data-theme-copy="registerPretitle">Portal Registration</span>
+        <h1 class="page-title" data-theme-copy="registerTitle">Event Registration</h1>
+        <p class="page-description" data-theme-copy="registerSubtitle">
+          Secure your participation pass for Code Crack 3.0 and competitive festival tracks.
+        </p>
+      </header>
+
+      <!-- Registration Form Section -->
+      <section id="registrationFormSection" class="form-shell-card" aria-label="Registration Form">
+        <form id="registrationForm" novalidate>
+          <div class="form-grid">
+            <!-- Full Name (Required) -->
+            <div class="form-group">
+              <label for="regName" class="form-label">
+                Full Name <span class="req-star" aria-hidden="true">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="regName" 
+                name="name" 
+                class="form-input" 
+                placeholder="e.g. Alex Rivera" 
+                required 
+                autocomplete="name"
+                aria-describedby="nameError"
+                aria-invalid="false"
+              >
+              <div class="field-error d-none" id="nameError" role="alert" aria-live="polite"></div>
+            </div>
+
+            <!-- Email Address (Required + Format Check) -->
+            <div class="form-group">
+              <label for="regEmail" class="form-label">
+                Official Email <span class="req-star" aria-hidden="true">*</span>
+              </label>
+              <input 
+                type="email" 
+                id="regEmail" 
+                name="email" 
+                class="form-input" 
+                placeholder="e.g. alex@university.edu" 
+                required 
+                autocomplete="email"
+                aria-describedby="emailError"
+                aria-invalid="false"
+              >
+              <div class="field-error d-none" id="emailError" role="alert" aria-live="polite"></div>
+            </div>
+
+            <!-- Contact Phone (Optional, 10 digits if filled) -->
+            <div class="form-group">
+              <label for="regPhone" class="form-label">
+                Phone Number <span class="form-hint">(Optional, 10 digits)</span>
+              </label>
+              <input 
+                type="tel" 
+                id="regPhone" 
+                name="phone" 
+                class="form-input" 
+                placeholder="e.g. 9876543210" 
+                maxlength="10"
+                autocomplete="tel"
+                aria-describedby="phoneError"
+                aria-invalid="false"
+              >
+              <div class="field-error d-none" id="phoneError" role="alert" aria-live="polite"></div>
+            </div>
+
+            <!-- College / University (Required) -->
+            <div class="form-group">
+              <label for="regCollege" class="form-label">
+                College / Institution <span class="req-star" aria-hidden="true">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="regCollege" 
+                name="college" 
+                class="form-input" 
+                placeholder="e.g. Institute of Technology" 
+                required 
+                aria-describedby="collegeError"
+                aria-invalid="false"
+              >
+              <div class="field-error d-none" id="collegeError" role="alert" aria-live="polite"></div>
+            </div>
+
+            <!-- Academic Year (Required) -->
+            <div class="form-group">
+              <label for="regYear" class="form-label">
+                Year of Study <span class="req-star" aria-hidden="true">*</span>
+              </label>
+              <select id="regYear" name="year" class="form-select" required aria-describedby="yearError" aria-invalid="false">
+                <option value="" disabled selected>— Select Year —</option>
+                <option value="1st Year">1st Year (Freshman)</option>
+                <option value="2nd Year">2nd Year (Sophomore)</option>
+                <option value="3rd Year">3rd Year (Junior)</option>
+                <option value="4th Year">4th Year (Senior)</option>
+                <option value="Postgraduate">Postgraduate / Masters</option>
+              </select>
+              <div class="field-error d-none" id="yearError" role="alert" aria-live="polite"></div>
+            </div>
+
+            <!-- Event Dropdown (From data.js, preselected by ?event=) -->
+            <div class="form-group">
+              <label for="regEvent" class="form-label">
+                Select Event <span class="req-star" aria-hidden="true">*</span>
+              </label>
+              <select id="regEvent" name="event" class="form-select" required aria-describedby="eventError" aria-invalid="false">
+                <option value="" disabled selected>Loading available arenas...</option>
+              </select>
+              <div class="field-error d-none" id="eventError" role="alert" aria-live="polite"></div>
+            </div>
+
+            <!-- Message / Notes (Optional) -->
+            <div class="form-group form-group-full">
+              <label for="regMessage" class="form-label">
+                Additional Notes / Team Members <span class="form-hint">(Optional)</span>
+              </label>
+              <textarea 
+                id="regMessage" 
+                name="message" 
+                class="form-textarea" 
+                rows="3" 
+                placeholder="Specify teammates' names or hardware requirements (e.g. LAN cables, battery adapters)..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-primary btn-form-submit" id="formSubmitBtn">
+              <span>Submit Registration</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- On-Screen Confirmation Card (Swapped via CSS class, no inline styles) -->
+      <section id="confirmationSection" class="d-none" aria-live="polite">
+        <!-- Rendered dynamically by js/form.js -->
+      </section>
+    </div>
+  </main>
+
+  <!-- Shared Footer Injected via js/layout.js -->
+  <div id="footer-mount"></div>
+
+  <!-- Standard Scripts (Order Preserved: theme -> data -> layout -> form) -->
+  <script src="js/theme.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>

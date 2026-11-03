@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore events and tournaments at TECHNOVA 2027.">
+  <title>Events • TECHNOVA 2027</title>
+
+  <!-- Theme Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Theme-Neutral Background System -->
+  <div class="bg-pattern" aria-hidden="true">
+    <div class="bg-layer-1"></div>
+    <div class="bg-layer-2"></div>
+  </div>
+
+  <!-- Shared Navbar Injected via js/layout.js -->
+  <div id="navbar-mount"></div>
+
+  <!-- Main Content -->
+  <main id="main-content" class="site-main">
+    <div class="container">
+      <!-- Page Header -->
+      <header class="page-header">
+        <span class="page-pretitle" data-theme-copy="eventsPretitle">Explore Arenas</span>
+        <h1 class="page-title" data-theme-copy="eventsTitle">Festival Events</h1>
+        <p class="page-description" data-theme-copy="eventsSubtitle">
+          Premier tournaments, algorithmic coding battles, and stage performances.
+        </p>
+      </header>
+
+      <!-- Combinable Filters Toolbar -->
+      <section class="filter-toolbar" aria-label="Event Filtering Controls">
+        <div class="filter-row">
+          <!-- Category Filter Buttons -->
+          <div class="filter-group" role="group" aria-label="Filter by Category">
+            <span class="filter-label">Category:</span>
+            <button type="button" class="filter-pill active" data-filter-cat="All">All Categories</button>
+            <button type="button" class="filter-pill" data-filter-cat="Technical">Technical</button>
+            <button type="button" class="filter-pill" data-filter-cat="Cultural">Cultural</button>
+            <button type="button" class="filter-pill" data-filter-cat="Gaming">Gaming</button>
+          </div>
+
+          <!-- Day Filter Buttons -->
+          <div class="filter-group" role="group" aria-label="Filter by Day">
+            <span class="filter-label">Day:</span>
+            <button type="button" class="filter-pill active" data-filter-day="All">All Days</button>
+            <button type="button" class="filter-pill" data-filter-day="2027-02-12">Day 1 (12 Feb)</button>
+            <button type="button" class="filter-pill" data-filter-day="2027-02-13">Day 2 (13 Feb)</button>
+          </div>
+        </div>
+
+        <!-- Filter Status & Quick Reset -->
+        <div class="filter-status-row">
+          <span class="event-count-badge" id="eventCountDisplay" aria-live="polite">Showing 12 of 12 events</span>
+          <button type="button" class="btn-clear-filters" id="clearFiltersBtn">
+            <span>↺ Reset Filters</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Events Grid Container -->
+      <section class="events-grid" id="eventsGrid" aria-label="Festival Events List">
+        <!-- Rendered dynamically by js/events.js via js/card.js -->
+      </section>
+    </div>
+  </main>
+
+  <!-- Shared Footer Injected via js/layout.js -->
+  <div id="footer-mount"></div>
+
+  <!-- Standard Scripts (Order Preserved: theme -> data -> card -> layout -> events) -->
+  <script src="js/theme.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/card.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/events.js"></script>
+</body>
+</html>

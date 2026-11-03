@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TECHNOVA 2027 Festival Timeline & Event Schedule with Parallel Tracks.">
+  <title>Schedule • TECHNOVA 2027</title>
+
+  <!-- Theme Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Theme-Neutral Background System -->
+  <div class="bg-pattern" aria-hidden="true">
+    <div class="bg-layer-1"></div>
+    <div class="bg-layer-2"></div>
+  </div>
+
+  <!-- Shared Navbar Injected via js/layout.js -->
+  <div id="navbar-mount"></div>
+
+  <!-- Main Content -->
+  <main id="main-content" class="site-main">
+    <div class="container">
+      <!-- Page Header -->
+      <header class="page-header">
+        <span class="page-pretitle" data-theme-copy="schedulePretitle">Timeline & Tracks</span>
+        <h1 class="page-title" data-theme-copy="scheduleTitle">Festival Schedule</h1>
+        <p class="page-description" data-theme-copy="scheduleSubtitle">
+          Chronological itinerary across all festival tracks and simultaneous stages.
+        </p>
+      </header>
+
+      <!-- Mandatory Schedule Reading Guide Note -->
+      <aside class="schedule-guide-card" role="note" aria-label="Schedule Reading Instructions">
+        <div class="guide-icon" aria-hidden="true">💡</div>
+        <div>
+          <h2 class="guide-heading" data-theme-copy="scheduleGuideHeading">How to read this schedule</h2>
+          <p class="guide-text" data-theme-copy="scheduleGuideText">
+            When events share a time slot, we group them under one heading and show them side by side. Each card keeps its own venue, category and exact timing, so nothing is hidden. On mobile they stack in the same order.
+          </p>
+        </div>
+      </aside>
+
+      <!-- Day Tabs Navigation -->
+      <div class="day-tabs-container" role="tablist" aria-label="Festival Days">
+        <button type="button" class="day-tab-btn active" role="tab" aria-selected="true" data-sched-day="2027-02-12">
+          <span>🗓 Day 1 • Friday, 12 Feb</span>
+        </button>
+        <button type="button" class="day-tab-btn" role="tab" aria-selected="false" data-sched-day="2027-02-13">
+          <span>🗓 Day 2 • Saturday, 13 Feb</span>
+        </button>
+        <button type="button" class="day-tab-btn" role="tab" aria-selected="false" data-sched-day="All">
+          <span>🌐 Complete 2-Day Timeline</span>
+        </button>
+      </div>
+
+      <!-- Schedule Category Filter -->
+      <section class="filter-toolbar" aria-label="Schedule Category Filter">
+        <div class="filter-row">
+          <div class="filter-group" role="group" aria-label="Filter schedule by category">
+            <span class="filter-label">Filter Category:</span>
+            <button type="button" class="filter-pill active" data-sched-cat="All">All Tracks</button>
+            <button type="button" class="filter-pill" data-sched-cat="Technical">Technical</button>
+            <button type="button" class="filter-pill" data-sched-cat="Cultural">Cultural</button>
+            <button type="button" class="filter-pill" data-sched-cat="Gaming">Gaming</button>
+          </div>
+
+          <div class="filter-group">
+            <span class="event-count-badge" id="scheduleCountDisplay" aria-live="polite">Showing 6 of 6 events</span>
+            <button type="button" class="btn-clear-filters" id="clearScheduleFiltersBtn">
+              <span>↺ Reset Category</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule Timeline Feed -->
+      <div class="schedule-timeline" id="scheduleTimeline" aria-label="Chronological Timeline">
+        <!-- Rendered dynamically by js/schedule.js via js/card.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared Footer Injected via js/layout.js -->
+  <div id="footer-mount"></div>
+
+  <!-- Standard Scripts (Order Preserved: theme -> data -> card -> layout -> schedule -> tests) -->
+  <script src="js/theme.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/card.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/schedule.js"></script>
+  <script src="js/tests.js"></script>
+</body>
+</html>

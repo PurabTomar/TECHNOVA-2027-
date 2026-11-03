@@ -1,0 +1,14 @@
+# Git
+.git/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories
+.vscode/
+.idea/
+
+# Logs
+*.log

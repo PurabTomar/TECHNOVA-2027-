@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TECHNOVA 2027 - Code Crack 3.0 Hackathon & College Tech-Cultural Festival.">
+  <title>TECHNOVA 2027 • Code Crack 3.0 Festival</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Theme-Neutral Background System -->
+  <div class="bg-pattern" aria-hidden="true">
+    <div class="bg-layer-1"></div>
+    <div class="bg-layer-2"></div>
+  </div>
+
+  <!-- Shared Navbar -->
+  <div id="navbar-mount"></div>
+
+  <main id="main-content" class="site-main">
+    <!-- =====================================================================
+         HERO — Two columns (text left, SVG art right) on desktop; stacked on mobile
+         ===================================================================== -->
+    <section class="hero-section container">
+      <div class="hero-inner">
+        <!-- Left: Text Column -->
+        <div class="hero-text-col">
+          <div class="hero-pill-badge">
+            <span class="brand-badge-icon" aria-hidden="true">✦</span>
+            <span data-theme-copy="heroKicker">CODE CRACK 3.0 HACKATHON &amp; ANNUAL FEST</span>
+          </div>
+
+          <h1 class="hero-main-title" id="heroTitle">TECHNOVA 2027</h1>
+
+          <p class="hero-tagline" data-theme-copy="heroTagline">
+            Transcending boundaries across the tech cosmos, cultural stages, and competitive arenas.
+          </p>
+
+          <!-- Dates meta — populated from FEST_DAYS by home.js -->
+          <div class="hero-dates-meta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="icon-svg">
+              <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+              <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="2"/>
+              <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+              <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span id="heroDatesLabel">12 – 13 February 2027 • University Central Campus</span>
+          </div>
+
+          <!-- Two CTAs: one primary, one ghost -->
+          <div class="hero-cta-group">
+            <a href="contact.html" class="btn btn-primary btn-lg">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="icon-svg">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+              <span>Register Now</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="events.html" class="btn btn-ghost">
+              <span data-theme-copy="heroCtaExplore">Explore All Events</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Inline SVG Art (theme-colored via CSS variables) -->
+        <div class="hero-art-col" aria-hidden="true">
+          <svg class="hero-art-svg" viewBox="0 0 420 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract festival art">
+            <!-- Orbit rings -->
+            <circle cx="210" cy="200" r="160" stroke="var(--color-accent-primary-border)" stroke-width="1" stroke-dasharray="8 6"/>
+            <circle cx="210" cy="200" r="115" stroke="var(--color-accent-secondary-border)" stroke-width="1" stroke-dasharray="4 8"/>
+            <circle cx="210" cy="200" r="65" stroke="var(--color-accent-primary-border)" stroke-width="1"/>
+
+            <!-- Central glow orb -->
+            <circle cx="210" cy="200" r="42" fill="var(--color-accent-primary-faint)"/>
+            <circle cx="210" cy="200" r="28" fill="var(--color-accent-primary-faint)"/>
+            <circle cx="210" cy="200" r="16" fill="var(--color-accent-primary)"/>
+
+            <!-- Orbiting satellites -->
+            <circle cx="210" cy="40" r="8" fill="var(--color-accent-secondary)"/>
+            <circle cx="370" cy="200" r="6" fill="var(--color-accent-primary)"/>
+            <circle cx="210" cy="360" r="7" fill="var(--cat-gaming-color)"/>
+            <circle cx="50" cy="200" r="5" fill="var(--cat-cultural-color)"/>
+
+            <!-- Diagonal accent lines -->
+            <line x1="80" y1="80" x2="340" y2="320" stroke="var(--color-accent-primary-border)" stroke-width="1"/>
+            <line x1="340" y1="80" x2="80" y2="320" stroke="var(--color-accent-secondary-border)" stroke-width="1"/>
+
+            <!-- Star particles -->
+            <circle cx="120" cy="60" r="2.5" fill="var(--color-text-primary)" opacity="0.8"/>
+            <circle cx="310" cy="50" r="1.5" fill="var(--color-accent-primary)" opacity="0.9"/>
+            <circle cx="60" cy="310" r="2" fill="var(--color-accent-secondary)" opacity="0.7"/>
+            <circle cx="360" cy="130" r="1.5" fill="var(--cat-gaming-color)" opacity="0.8"/>
+            <circle cx="380" cy="290" r="2" fill="var(--color-text-primary)" opacity="0.6"/>
+            <circle cx="40" cy="150" r="1.5" fill="var(--cat-cultural-color)" opacity="0.8"/>
+            <circle cx="170" cy="20" r="2" fill="var(--color-accent-primary)" opacity="0.7"/>
+            <circle cx="260" cy="385" r="2.5" fill="var(--color-accent-secondary)" opacity="0.6"/>
+
+            <!-- Code brackets decorative -->
+            <text x="190" y="210" font-size="18" fill="var(--color-text-primary)" opacity="0.9" font-family="monospace" font-weight="bold" text-anchor="middle">&lt;/&gt;</text>
+
+            <!-- Category orbit dots with halos -->
+            <circle cx="300" cy="100" r="10" fill="var(--cat-tech-bg)" stroke="var(--cat-tech-border)" stroke-width="1.5"/>
+            <circle cx="300" cy="100" r="4" fill="var(--cat-tech-color)"/>
+
+            <circle cx="320" cy="295" r="10" fill="var(--cat-gaming-bg)" stroke="var(--cat-gaming-border)" stroke-width="1.5"/>
+            <circle cx="320" cy="295" r="4" fill="var(--cat-gaming-color)"/>
+
+            <circle cx="105" cy="290" r="10" fill="var(--cat-cultural-bg)" stroke="var(--cat-cultural-border)" stroke-width="1.5"/>
+            <circle cx="105" cy="290" r="4" fill="var(--cat-cultural-color)"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Countdown below two-column layout, full-width -->
+      <div class="hero-countdown-row">
+        <div class="countdown-container" id="festCountdownWrapper" role="timer" aria-label="Festival Launch Countdown">
+          <div class="countdown-title" id="countdownLabel">
+            <span class="status-pulse-dot" aria-hidden="true"></span>
+            <span data-theme-copy="countdownTitle">Mission Launch Countdown</span>
+          </div>
+
+          <div class="countdown-grid" id="festCountdown">
+            <div class="countdown-box">
+              <span class="countdown-digit" id="countDays">00</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-digit" id="countHours">00</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-digit" id="countMinutes">00</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-digit" id="countSeconds">00</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Derived Metrics Strip -->
+    <section class="container stats-strip" aria-label="Festival Metrics">
+      <div class="stats-grid" id="festDerivedStats">
+        <!-- Rendered dynamically from getDerivedFestivalStats() in js/data.js -->
+      </div>
+    </section>
+
+    <!-- Featured Highlights -->
+    <section class="container mt-4">
+      <div class="section-header-row">
+        <div>
+          <span class="page-pretitle" data-theme-copy="featuredPretitle">Selected Arenas</span>
+          <h2 class="page-title" data-theme-copy="featuredTitle">Featured Highlights</h2>
+          <p class="page-description" data-theme-copy="featuredSubtitle">
+            Headline challenges across algorithmic problem solving, hackathons, and robotics.
+          </p>
+        </div>
+        <a href="events.html" class="btn btn-secondary">
+          <span>View All Events</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="events-grid" id="featuredEventsGrid">
+        <!-- Rendered by js/home.js via renderEventCard() from js/card.js -->
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-mount"></div>
+
+  <!-- Script order: theme → data → card → layout → home -->
+  <script src="js/theme.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/card.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

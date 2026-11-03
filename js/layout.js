@@ -188,12 +188,46 @@
           </div>
 
           <div class="footer-bottom">
-            <p>© ${festYear} ${festName} Festival Committee. Code Crack 3.0 Hackathon. All rights reserved.</p>
-            <p class="footer-subtext" data-theme-copy="footerNote">${footerNote}</p>
+            <div class="footer-bottom-info">
+              <p>© ${festYear} ${festName} Festival Committee. Code Crack 3.0 Hackathon. All rights reserved.</p>
+              <p class="footer-subtext" data-theme-copy="footerNote">${footerNote}</p>
+            </div>
+            <div class="motion-toggle-pill" role="group" aria-label="Animation and motion preferences">
+              <span class="motion-label" aria-hidden="true">⚡ Motion:</span>
+              <div class="motion-btn-group">
+                <button type="button" class="motion-btn" data-motion-set="full" aria-label="Set motion to full">Full</button>
+                <button type="button" class="motion-btn" data-motion-set="lite" aria-label="Set motion to lite">Lite</button>
+                <button type="button" class="motion-btn" data-motion-set="off" aria-label="Set motion to off">Off</button>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
     `;
+
+    setupMotionToggle();
+  }
+
+  function setupMotionToggle() {
+    const current = (typeof window !== 'undefined' && window.FEST && window.FEST.motion)
+      ? window.FEST.motion.getMotionLevel()
+      : (document.documentElement.getAttribute('data-motion') || 'full');
+
+    document.querySelectorAll('[data-motion-set]').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-motion-set') === current);
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-motion-set');
+        if (typeof window !== 'undefined' && window.FEST && window.FEST.motion) {
+          window.FEST.motion.setMotionLevel(target);
+        } else {
+          document.documentElement.setAttribute('data-motion', target);
+        }
+        document.querySelectorAll('[data-motion-set]').forEach(b => {
+          b.classList.toggle('active', b.getAttribute('data-motion-set') === target);
+        });
+      });
+    });
+  }
   }
 
   function setupMobileMenu() {

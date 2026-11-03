@@ -187,6 +187,67 @@ function runFestivalTestSuite() {
     `Parsed fallback: ${JSON.stringify(parsedInvalid)}`
   );
 
+  /* --------------------------------------------------------------------------
+     5. Motion System Pure Functions
+     -------------------------------------------------------------------------- */
+  const motionApi = (typeof window !== 'undefined' && window.FEST && window.FEST.motion)
+    ? window.FEST.motion
+    : (typeof global !== 'undefined' && global.FEST && global.FEST.motion ? global.FEST.motion : null);
+
+  if (motionApi) {
+    // Motion Decision 1: prefers-reduced-motion forced OFF
+    const decReduced = motionApi.decideMotionLevel({ reducedMotion: true, hardwareConcurrency: 16, width: 1920 });
+    assert(
+      'Motion 1. prefers-reduced-motion strictly forces motion level to "off"',
+      decReduced === 'off',
+      `Expected "off", got "${decReduced}"`
+    );
+
+    // Motion Decision 2: low hardware or mobile forces LITE
+    const decLowCores = motionApi.decideMotionLevel({ reducedMotion: false, hardwareConcurrency: 2, width: 1920 });
+    const decMobile = motionApi.decideMotionLevel({ reducedMotion: false, hardwareConcurrency: 8, width: 600 });
+    const decSaveData = motionApi.decideMotionLevel({ reducedMotion: false, hardwareConcurrency: 8, width: 1200, saveData: true });
+    assert(
+      'Motion 2. Low hardware, mobile width (<768px), or saveData forces "lite"',
+      decLowCores === 'lite' && decMobile === 'lite' && decSaveData === 'lite',
+      `Got cores: ${decLowCores}, mobile: ${decMobile}, saveData: ${decSaveData}`
+    );
+
+    // Motion Decision 3: high-end desktop defaults to FULL
+    const decDesktop = motionApi.decideMotionLevel({ reducedMotion: false, hardwareConcurrency: 8, width: 1440 });
+    assert(
+      'Motion 3. High-spec desktop defaults to "full" motion',
+      decDesktop === 'full',
+      `Expected "full", got "${decDesktop}"`
+    );
+
+    // Motion Decision 4: user stored preference overrides defaults
+    const decStored = motionApi.decideMotionLevel({ reducedMotion: false, hardwareConcurrency: 2, storedPreference: 'full' });
+    assert(
+      'Motion 4. User stored preference in localStorage overrides hardware heuristics',
+      decStored === 'full',
+      `Expected "full", got "${decStored}"`
+    );
+
+    // Stagger calculation
+    const delay0 = motionApi.calculateStaggerDelay(0, 100, 60);
+    const delay3 = motionApi.calculateStaggerDelay(3, 100, 60);
+    assert(
+      'Motion 5. Stagger delay calculation matches formula (base + index * step)',
+      delay0 === 100 && delay3 === 280,
+      `Expected 100 and 280, got ${delay0} and ${delay3}`
+    );
+
+    // Sanitize motion level
+    const sanLite = motionApi.sanitizeMotionLevel('lite');
+    const sanInvalid = motionApi.sanitizeMotionLevel('ultra-extreme');
+    assert(
+      'Motion 6. Motion level sanitizer normalizes invalid inputs to "full"',
+      sanLite === 'lite' && sanInvalid === 'full',
+      `Expected "lite" and "full", got "${sanLite}" and "${sanInvalid}"`
+    );
+  }
+
   console.log(
     isNode
       ? `[TECHNOVA Test Suite Completed] ${passed} passed, ${failed} failed.`
